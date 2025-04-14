@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitHub Pages Guide</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="container header-container">
+      <div class="header-logo">
+        <!-- Gold logo image inserted. Adjust the path if needed -->
+        <img src="gold logo.avif" alt="Gold Logo" class="logo-img">
+        <h1 class="logo">GitHub Pages</h1>
+      </div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#quickstart">Quickstart</a></li>
+          <li><a href="#introduction">Introduction</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div id="current-date" class="date-display"></div>
+    </div>
+  </header>
+
+  <section id="hero" class="hero-section">
+    <div class="hero-content">
+      <h2>Welcome to Your GitHub Pages</h2>
+      <p>Discover the power of modern, responsive design to showcase your projects.</p>
+      <a href="#quickstart" class="btn">Get Started</a>
+    </div>
+  </section>
+
+  <main>
+    <section id="quickstart" class="section">
+      <div class="container">
+        <h2>Quickstart</h2>
+        <p>Use this guide to quickly set up and deploy your GitHub Pages site with ease.</p>
+        <!-- More quickstart content -->
+      </div>
+    </section>
+
+    <section id="introduction" class="section">
+      <div class="container">
+        <h2>Introduction</h2>
+        <p>This site provides a simple, elegant approach for hosting and maintaining your content with GitHub Pages.</p>
+        <!-- Stock Widget -->
+        <div class="stock-widget">
+          <h3 class="gold-header">DNB Stock Price</h3>
+          <div class="stock-info">
+            <p>Current Price: <span id="stock-price">Loading...</span></p>
+            <p>Currency: <span id="stock-currency">NOK</span></p>
+            <p>Last Updated: <span id="stock-updated">-</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="section">
+      <div class="container">
+        <h2>Features</h2>
+        <ul class="features-list">
+          <li>Modern responsive design</li>
+          <li>Dynamic data updates</li>
+          <li>Easy navigation and clean layout</li>
+          <li>Customizable sections for your content</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container">
+        <h2>Contact</h2>
+        <p>If you have any questions or need support, please feel free to reach out.</p>
+        <form id="contact-form">
+          <input type="text" name="name" placeholder="Your Name" required>
+          <input type="email" name="email" placeholder="Your Email" required>
+          <textarea name="message" placeholder="Your Message" required></textarea>
+          <button type="submit" class="btn">Send Message</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 GitHub Pages. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Update date, week number, and dynamic content
+    function updateDynamicData() {
+      const dateElement = document.getElementById('current-date');
+      const today = new Date();
+      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      const startDate = new Date(today.getFullYear(), 0, 1);
+      const days = Math.floor((today - startDate) / (24 * 60 * 60 * 1000));
+      const weekNumber = Math.ceil((days + startDate.getDay() + 1) / 7);
+      dateElement.innerHTML = `
+        ${today.toLocaleDateString('en-US', options)}<br>
+        Week ${weekNumber}
+      `;
+    }
+
+    // Fetch DNB Stock data
+    async function fetchDNBStock() {
+      try {
+        const response = await fetch(
+          `https://api.allorigins.win/get?url=${encodeURIComponent('https://query1.finance.yahoo.com/v8/finance/chart/DNB.OL')}`
+        );
+        const { contents } = await response.json();
+        const data = JSON.parse(contents);
+        const price = data.chart.result[0].meta.regularMarketPrice.toFixed(2);
+        const updated = new Date(data.chart.result[0].meta.regularMarketTime * 1000);
+        document.getElementById('stock-price').textContent = `${price} NOK`;
+        document.getElementById('stock-updated').textContent = updated.toLocaleTimeString('no-NO');
+      } catch (error) {
+        console.error('Error fetching stock data:', error);
+        document.getElementById('stock-price').textContent = 'Price unavailable';
+      }
+    }
+
+    // Initial calls
+    updateDynamicData();
+    fetchDNBStock();
+    
+    // Update dynamic data periodically
+    setInterval(updateDynamicData, 60000);
+    setInterval(fetchDNBStock, 120000);
+  </script>
+</body>
+</html>
