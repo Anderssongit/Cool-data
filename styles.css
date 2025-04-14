@@ -1,0 +1,191 @@
+/* Define CSS variables for consistency */
+:root {
+  --primary: #3498db;
+  --accent: #2980b9;
+  --text: #333;
+  --surface: #f9f9f9;
+  --background: #fff;
+  --header-bg: #fff;
+  --btn-bg: #3498db;
+  --btn-text: #fff;
+  --gold: #d4af37;
+  --font-stack: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Global Styles */
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: var(--font-stack);
+  background-color: var(--background);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* Header Styles */
+header {
+  background-color: var(--header-bg);
+  border-bottom: 1px solid var(--accent);
+  padding: 0.5rem 0;
+}
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.header-logo {
+  display: flex;
+  align-items: center;
+}
+.logo-img {
+  max-height: 50px;
+  margin-right: 0.5rem;
+}
+.logo {
+  margin: 0;
+  color: var(--gold); /* Updated to reflect a gold accent for branding */
+}
+.main-nav ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+.main-nav li {
+  margin-left: 1.5rem;
+}
+.main-nav a {
+  text-decoration: none;
+  color: var(--text);
+  transition: color 0.3s;
+}
+.main-nav a:hover {
+  color: var(--primary);
+}
+.date-display {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Hero Section */
+.hero-section {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: #fff;
+  text-align: center;
+  padding: 4rem 1rem;
+}
+.hero-content h2 {
+  margin-top: 0;
+  font-size: 2.5rem;
+}
+.hero-content p {
+  font-size: 1.2rem;
+}
+.btn {
+  display: inline-block;
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+  padding: 0.75rem 1.5rem;
+  margin-top: 1rem;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+.btn:hover {
+  background-color: var(--accent);
+}
+
+/* Main Content Sections */
+.section {
+  padding: 3rem 0;
+  border-bottom: 1px solid #eaeaea;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Stock Widget (enhanced) */
+.stock-widget {
+  background: var(--surface);
+  padding: 1.5rem;
+  margin-top: 2rem;
+  border-radius: 12px;
+  border: 1px solid var(--accent);
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.05);
+}
+.gold-header {
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+.stock-info p {
+  margin: 0.5rem 0;
+  color: var(--text);
+  font-size: 1rem;
+}
+#stock-price {
+  font-weight: bold;
+  color: var(--primary);
+  font-size: 1.2rem;
+}
+#stock-updated {
+  font-style: italic;
+  color: #666;
+}
+
+/* Features Section */
+.features-list {
+  list-style: disc inside;
+  padding-left: 1rem;
+}
+.features-list li {
+  margin: 0.5rem 0;
+}
+
+/* Contact Form */
+#contact-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+}
+#contact-form input,
+#contact-form textarea {
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+#contact-form button {
+  align-self: flex-start;
+}
+
+/* Footer */
+footer {
+  background-color: var(--header-bg);
+  padding: 1rem 0;
+  text-align: center;
+  border-top: 1px solid var(--accent);
+  color: #666;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  .main-nav ul {
+    flex-direction: column;
+    margin-top: 1rem;
+  }
+  .main-nav li {
+    margin: 0.5rem 0;
+  }
+}
