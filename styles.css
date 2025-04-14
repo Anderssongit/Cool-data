@@ -4,8 +4,8 @@
   --accent: #2980b9;
   --text: #333;
   --surface: #f9f9f9;
-  --background: #fff;
-  --header-bg: #fff;
+  --background: #f2f2f2;  /* Updated from white to a very light grey */
+  --header-bg: #f2f2f2;   /* Updated from white to a very light grey */
   --btn-bg: #3498db;
   --btn-text: #fff;
   --gold: #d4af37;
@@ -49,7 +49,7 @@ header {
 }
 .logo {
   margin: 0;
-  color: var(--gold); /* Updated to reflect a gold accent for branding */
+  color: var(--gold);
 }
 .main-nav ul {
   list-style: none;
@@ -73,9 +73,9 @@ header {
   color: #666;
 }
 
-/* Hero Section */
+/* Hero Section: Blue gradient replaced with a black bar */
 .hero-section {
-  background: linear-gradient(135deg, var(--primary), var(--accent));
+  background: #000;  /* Solid black background */
   color: #fff;
   text-align: center;
   padding: 4rem 1rem;
@@ -180,12 +180,3 @@ footer {
   .header-container {
     flex-direction: column;
     text-align: center;
-  }
-  .main-nav ul {
-    flex-direction: column;
-    margin-top: 1rem;
-  }
-  .main-nav li {
-    margin: 0.5rem 0;
-  }
-}
