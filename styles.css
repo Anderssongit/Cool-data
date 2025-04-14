@@ -180,3 +180,12 @@ footer {
   .header-container {
     flex-direction: column;
     text-align: center;
+  }
+  .main-nav ul {
+    flex-direction: column;
+    margin-top: 1rem;
+  }
+  .main-nav li {
+    margin: 0.5rem 0;
+  }
+}
